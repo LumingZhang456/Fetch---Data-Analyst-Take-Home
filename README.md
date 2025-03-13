@@ -7,7 +7,7 @@ This repository contains my analysis for the Fetch Data Analyst Take-Home Exerci
 - `data/` - Contains the provided unstructured CSV files.
 - `notebooks/` - Jupyter notebooks for data exploration and visualization.
 - `SQL.md` - SQL scripts used to answer the provided analytical questions.
-- `findings/` - Summary of key insights, trends, and data quality issues.
+- `Explore_the_Data.md` - Summary data quality issues.
 - `README.md` - Overview of the project and instructions.
 
 ## Data Exploration
