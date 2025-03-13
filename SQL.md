@@ -12,3 +12,4 @@ GROUP BY brand
 ORDER BY receipt_num DESC
 LIMIT 5;
 
+![Output for Question 1](images/Q2-1.png)
