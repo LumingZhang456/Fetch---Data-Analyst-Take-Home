@@ -2,8 +2,8 @@
 
 ```sql
 SELECT TOP 5 brand, COUNT(receipt_id) AS receipt_num
-FROM PRODUCTS_TAKEHOME p
-LEFT JOIN TRANSACTION_TAKEHOME t
+FROM TRANSACTION_TAKEHOME t
+LEFT JOIN PRODUCTS_TAKEHOME p
 ON p.barcode = t.barcode
 LEFT JOIN USER_TAKEHOME u
 ON t.USER_ID = u.id
@@ -16,8 +16,8 @@ Result:
 brand	            receipt_num
 NERDS CANDY	    6
 DOVE	            6
-SOUR PATCH KIDS	    4
 GREAT VALUE	    4
+SOUR PATCH KIDS	    4
 HERSHEY'S	    4
 ```
 
@@ -25,8 +25,8 @@ HERSHEY'S	    4
 
 ```sql
 SELECT TOP 5 p.brand, SUM(t.FINAL_SALE) AS total_sales
-FROM PRODUCTS_TAKEHOME p
-LEFT JOIN TRANSACTION_TAKEHOME t
+FROM TRANSACTION_TAKEHOME t
+LEFT JOIN PRODUCTS_TAKEHOME p
 ON p.barcode = t.barcode
 LEFT JOIN USER_TAKEHOME u
 ON t.USER_ID = u.id
@@ -62,8 +62,10 @@ SELECT
     g.generation,
     ROUND(SUM(t.FINAL_SALE) * 100.0 / (SELECT SUM(final_sale) FROM TRANSACTION_TAKEHOME), 2) AS sales_percentage
 FROM TRANSACTION_TAKEHOME t
-JOIN Generations g ON t.user_id = g.id
-JOIN PRODUCTS_TAKEHOME p ON t.barcode = p.barcode
+LEFT JOIN Generations g 
+ON t.user_id = g.id
+LEFT JOIN PRODUCTS_TAKEHOME p 
+ON t.barcode = p.barcode
 WHERE p.category_1 = 'Health & Wellness'
 GROUP BY g.generation;
 ```
@@ -72,5 +74,6 @@ Result:
 generation	sales_percentage
 Gen X	        0.03
 Millennials	0.02
+NULL	        24.04
 Baby Boomers	0.06
 ```
