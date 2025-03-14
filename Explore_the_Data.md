@@ -1,6 +1,6 @@
 ## - Are there any data quality issues present?
-
-
+- Overall, there are many missing data. 
+- For certain fields, their formats are not consistent, e.g. gender.
 
 
 ## - Are there any fields that are challenging to understand?
